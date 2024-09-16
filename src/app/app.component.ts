@@ -28,11 +28,10 @@ export class AppComponent implements OnInit {
       next: (response) => {
         if (response.cod === 404) {
           this.isError = true;
-          this.isLoading = false;
         } else {
           this.weatherData = response;
-          this.isLoading = false;
         }
+        this.isLoading = false;
       },
       error: (err) => {
         this.isLoading = false;

@@ -21,7 +21,7 @@
 </div>
 
 <!-- Weather Data -->
-<div class="container" *ngIf="weatherData && !isError">
+<div class="container" *ngIf="weatherData && !isLoading && !isError">
   <div class="upper-data">
     <img src="../assets/cold.jpg" *ngIf="weatherData.main.temp <= 18" />
     <img src="../assets/warm.jpg" *ngIf="weatherData.main.temp > 18" />
