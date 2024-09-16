@@ -26,8 +26,13 @@ export class AppComponent implements OnInit {
 
     this.weatherservice.getWeatherData(this.cityName).subscribe({
       next: (response) => {
-        this.weatherData = response;
-        this.isLoading = false;
+        if (response.cod === 404) {
+          this.isError = true;
+          this.isLoading = false;
+        } else {
+          this.weatherData = response;
+          this.isLoading = false;
+        }
       },
       error: (err) => {
         this.isLoading = false;

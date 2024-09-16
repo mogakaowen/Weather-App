@@ -7,16 +7,17 @@
       [(ngModel)]="cityName"
       required
     />
-    <button type="submit">Search</button>
   </form>
 </div>
 
 <!-- Loader -->
-<div *ngIf="isLoading" class="loader">Loading...</div>
+<div *ngIf="isLoading" class="loader">
+  <span>Loading...</span>
+</div>
 
 <!-- Error Message -->
 <div *ngIf="isError" class="error-message">
-  City not found. Please try again.
+  <p>City not found. Please try again.</p>
 </div>
 
 <!-- Weather Data -->
