@@ -25,16 +25,5 @@ export class WeatherService {
       );
 
     return this.http.get<WeatherData>(weatherDataUrl, { headers });
-
-    // return this.http.get<WeatherData>(environment.weatherApi, {
-    //   headers: new HttpHeaders()
-    //   .set(environment.XRapidAPIHostHeaderName, environment.XRapidAPIHostHeaderValue)
-    //   .set(environment.XRapidAPIHeaderKeyName, environment.XRapidAPIHeaderKeyValue),
-    //   params: new HttpParams()
-    //   .set('q', city)
-    //   .set('units', 'metric')
-    //   .set('lang', 'en')
-    //   .set('mode', 'json')
-    // });
   }
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from './services/weather.service';
-// import { WeatherData } from './models/weather2.model';
 import { WeatherData } from './models/weather.model';
 
 @Component({
@@ -11,8 +10,8 @@ import { WeatherData } from './models/weather.model';
 export class AppComponent implements OnInit {
   weatherData?: WeatherData;
   cityName: string = 'Nairobi';
-  config: any;
-
+  isLoading: boolean = false;
+  isError: boolean = false;
   constructor(private weatherservice: WeatherService) {}
 
   ngOnInit(): void {
@@ -21,10 +20,18 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit() {
+    this.isLoading = true;
+    this.isError = false;
+    this.weatherData = undefined;
+
     this.weatherservice.getWeatherData(this.cityName).subscribe({
       next: (response) => {
         this.weatherData = response;
-        console.log(response);
+        this.isLoading = false;
+      },
+      error: (err) => {
+        this.isLoading = false;
+        this.isError = true;
       },
     });
 
